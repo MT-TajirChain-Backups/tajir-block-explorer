@@ -6,6 +6,14 @@
 /.pnp
 .pnp.js
 
+# Yarn Berry junk — keep the committed Classic launcher
+.yarn/*
+!.yarn/bin/
+!.yarn/bin/yarn
+!.yarn/releases/
+!.yarn/releases/yarn-1.22.22.js
+!.yarn/releases/yarn-classic.cjs
+
 # testing
 /coverage
 

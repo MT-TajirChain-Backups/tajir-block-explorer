@@ -94,7 +94,7 @@ function isVulnerable(name, version) {
     case 'serialize-javascript':
       return lt(version, '7.0.3');
     case 'sharp':
-      return lt(version, '0.35.0');
+      return lt(version, '0.35.4');
     case 'picomatch':
       if (version.startsWith('2.')) return lt(version, '2.3.2');
       if (version.startsWith('3.')) return lt(version, '3.0.2');
@@ -145,7 +145,7 @@ function patchedVersion(name, version) {
     case 'serialize-javascript':
       return '7.0.7';
     case 'sharp':
-      return '0.35.3';
+      return '0.35.4';
     case 'picomatch':
       if (version.startsWith('2.')) return '2.3.2';
       if (version.startsWith('3.')) return '3.0.2';
