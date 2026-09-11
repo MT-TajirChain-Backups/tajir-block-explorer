@@ -57,6 +57,7 @@ const schema = yup
     NEXT_PUBLIC_APP_PORT: yup.number().positive().integer(),
     NEXT_PUBLIC_APP_ENV: yup.string(),
     NEXT_PUBLIC_APP_INSTANCE: yup.string(),
+    NEXT_PUBLIC_APP_NAME_LATEST: yup.string(),
 
 
     // Features configuration

@@ -1,0 +1,6 @@
+{
+  "terminal.integrated.env.linux": {
+    "YARN_IGNORE_PATH": "1",
+    "PATH": "${workspaceFolder}/.yarn/bin:${env:PATH}"
+  }
+}

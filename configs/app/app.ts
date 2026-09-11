@@ -22,6 +22,7 @@ const app = Object.freeze({
   host: appHost,
   port: appPort,
   baseUrl,
+  nameLatest: getEnvValue('NEXT_PUBLIC_APP_NAME_LATEST'),
   useProxy: getEnvValue('NEXT_PUBLIC_USE_NEXT_JS_PROXY') === 'true',
   spriteHash,
 });

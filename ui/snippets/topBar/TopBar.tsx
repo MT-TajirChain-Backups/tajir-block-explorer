@@ -8,6 +8,9 @@ import useIsMobile from 'lib/hooks/useIsMobile';
 import useProvider from 'lib/web3/useProvider';
 import { CONTENT_MAX_WIDTH } from 'ui/shared/layout/utils';
 import NetworkAddToWallet from 'ui/shared/NetworkAddToWallet';
+import TestnetBadge from 'ui/snippets/navigation/TestnetBadge';
+import NetworkIcon from 'ui/snippets/networkLogo/NetworkIcon';
+import NetworkLogo from 'ui/snippets/networkLogo/NetworkLogo';
 
 import DeFiDropdown from './DeFiDropdown';
 import NetworkMenu from './NetworkMenu';
@@ -81,19 +84,34 @@ const TopBar = () => {
       borderColor="border.divider"
     >
       <Flex
-        py={3}
+        py={{ base: 3, lg: 2 }}
         px={{ base: 3, lg: 6 }}
+        minH={{ lg: '76px' }}
         m="0 auto"
         justifyContent="space-between"
         alignItems="center"
         maxW={`${CONTENT_MAX_WIDTH}px`}
+        position="relative"
       >
-        <HStack gap={0} fontSize="xs">
+        <HStack gap={0} fontSize="xs" flex="1" minW={0}>
           {Boolean(config.UI.featuredNetworks.items) && <NetworkMenu />}
           {!config.features.opSuperchain.isEnabled ? <TopBarStats /> : <div />}
         </HStack>
+        <Flex
+          position="absolute"
+          left="50%"
+          transform="translateX(-50%)"
+          alignItems="center"
+          gap={2}
+        >
+          <NetworkLogo display={{ base: 'none', lg: 'block' }} logoHeight="60px"/>
+          <NetworkIcon display={{ base: 'block', lg: 'none' }}/>
+          <TestnetBadge/>
+        </Flex>
         <HStack
           alignItems="center"
+          flex="1"
+          justifyContent="flex-end"
           separator={<Separator mx={{ base: 2, lg: 3 }} height={4} />}
         >
           {(hasAddChainButton || hasDeFiDropdown) && (

@@ -7,7 +7,8 @@ import HeaderMobile from 'ui/snippets/header/HeaderMobile';
 
 import * as Layout from './components';
 
-const TOP_BAR_HEIGHT = 36;
+const TOP_BAR_HEIGHT_MOBILE = 36;
+const TOP_BAR_HEIGHT_DESKTOP = 77;
 const HEADER_HEIGHT_MOBILE = 56;
 
 const LayoutApp = ({ children }: Props) => {
@@ -23,8 +24,8 @@ const LayoutApp = ({ children }: Props) => {
         <HeaderMobile/>
         <Layout.MainArea
           minH={{
-            base: `calc(100dvh - ${ TOP_BAR_HEIGHT + HEADER_HEIGHT_MOBILE }px)`,
-            lg: `calc(100dvh - ${ TOP_BAR_HEIGHT }px)`,
+            base: `calc(100dvh - ${ TOP_BAR_HEIGHT_MOBILE + HEADER_HEIGHT_MOBILE }px)`,
+            lg: `calc(100dvh - ${ TOP_BAR_HEIGHT_DESKTOP }px)`,
           }}
           flex={ 1 }
         >

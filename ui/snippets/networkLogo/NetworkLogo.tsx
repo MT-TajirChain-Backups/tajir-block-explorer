@@ -10,12 +10,12 @@ import IconSvg from 'ui/shared/IconSvg';
 
 import { INVERT_FILTER } from './consts';
 
-const LogoFallback = () => {
+const LogoFallback = ({ height = '30px' }: { height?: string }) => {
   return (
     <IconSvg
       name="networks/logo-placeholder"
       width="120px"
-      height="50px"
+      height={ height }
       color={{ base: 'blue.600', _dark: 'white' }}
       aria-label="Network logo placeholder"
     />
@@ -24,9 +24,10 @@ const LogoFallback = () => {
 
 type Props = {
   className?: string;
+  logoHeight?: string;
 };
 
-const NetworkLogo = ({ className }: Props) => {
+const NetworkLogo = ({ className, logoHeight = '30px' }: Props) => {
 
   const logoSrc = useColorModeValue(config.UI.navigation.logo.default, config.UI.navigation.logo.dark || config.UI.navigation.logo.default);
 
@@ -37,11 +38,11 @@ const NetworkLogo = ({ className }: Props) => {
       aria-label="Link to main page"
     >
       <Image
-        h="30px"
+        h={ logoHeight }
         skeletonWidth="120px"
         src={ logoSrc }
         alt={ `${ config.chain.name } network logo` }
-        fallback={ <LogoFallback/> }
+        fallback={ <LogoFallback height={ logoHeight }/> }
         filter={{ _dark: !config.UI.navigation.logo.dark ? INVERT_FILTER : undefined }}
         objectFit="contain"
         objectPosition="left"
