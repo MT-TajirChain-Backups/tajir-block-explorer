@@ -32,16 +32,14 @@ test.describe('no auth', () => {
     );
   });
 
-  test('+@dark-mode', async({ page }) => {
-    await page.locator('a[aria-label="Link to main page"]').last().hover();
+  test('+@dark-mode', async() => {
     await expect(component).toHaveScreenshot();
   });
 
   test.describe('xl screen', () => {
     test.use({ viewport: pwConfig.viewport.xl });
 
-    test('+@dark-mode', async({ page }) => {
-      await page.locator('a[aria-label="Link to main page"]').first().hover();
+    test('+@dark-mode', async() => {
       await expect(component).toHaveScreenshot();
     });
   });
@@ -91,7 +89,7 @@ test.describe('with tooltips', () => {
       { hooksConfig },
     );
 
-    await component.locator('header').hover();
+    await component.locator('.group').hover();
     await page.locator('svg[aria-label="Expand/Collapse menu"]').click();
     await page.locator('a[aria-label="Dapps link"]').hover();
 
@@ -147,16 +145,14 @@ noSideBarCookieTest.describe('cookie set to false', () => {
   });
 
   noSideBarCookieTest('', async() => {
-    const chainIcon = component.getByLabel('Network icon placeholder');
-    await expect(chainIcon).toBeHidden();
+    await expect(component.locator('.group')).toHaveCSS('width', '229px');
   });
 
   noSideBarCookieTest.describe('xl screen', () => {
     noSideBarCookieTest.use({ viewport: pwConfig.viewport.xl });
 
     noSideBarCookieTest('', async() => {
-      const chainIcon = component.getByLabel('Network icon placeholder');
-      await expect(chainIcon).toBeHidden();
+      await expect(component.locator('.group')).toHaveCSS('width', '229px');
     });
   });
 });
@@ -178,8 +174,7 @@ sideBarCookieTest.describe('cookie set to true', () => {
       { hooksConfig },
     );
 
-    const chainIcon = component.getByLabel('Network icon placeholder');
-    await expect(chainIcon).toBeVisible();
+    await expect(component.locator('.group')).toHaveCSS('width', '92px');
   });
 });
 
@@ -192,7 +187,7 @@ test('hover +@dark-mode', async({ render }) => {
     { hooksConfig },
   );
 
-  await component.locator('header').hover();
+  await component.locator('.group').hover();
   await expect(component).toHaveScreenshot();
 });
 
@@ -208,7 +203,7 @@ test.describe('hover xl screen', () => {
       { hooksConfig },
     );
 
-    await component.locator('header').hover();
+    await component.locator('.group').hover();
     await expect(component).toHaveScreenshot();
   });
 });
@@ -228,8 +223,7 @@ test.describe('with highlighted routes', () => {
     );
   });
 
-  test('+@dark-mode', async({ page }) => {
-    await page.locator('a[aria-label="Link to main page"]').last().hover();
+  test('+@dark-mode', async() => {
     await expect(component).toHaveScreenshot();
   });
 
@@ -241,8 +235,7 @@ test.describe('with highlighted routes', () => {
   test.describe('xl screen', () => {
     test.use({ viewport: pwConfig.viewport.xl });
 
-    test('+@dark-mode', async({ page }) => {
-      await page.locator('a[aria-label="Link to main page"]').first().hover();
+    test('+@dark-mode', async() => {
       await expect(component).toHaveScreenshot();
     });
   });
@@ -271,8 +264,7 @@ const promoBannerTest = (type: 'text' | 'image') => {
       await component.waitFor({ state: 'visible' });
     });
 
-    test(`${ darkModeRule }`, async({ page }) => {
-      await page.locator('a[aria-label="Link to main page"]').last().hover();
+    test(`${ darkModeRule }`, async() => {
       await expect(component).toHaveScreenshot();
     });
 
@@ -284,8 +276,7 @@ const promoBannerTest = (type: 'text' | 'image') => {
     test.describe('xl screen', () => {
       test.use({ viewport: pwConfig.viewport.xl });
 
-      test(`${ darkModeRule }`, async({ page }) => {
-        await page.locator('a[aria-label="Link to main page"]').first().hover();
+      test(`${ darkModeRule }`, async() => {
         await expect(component).toHaveScreenshot();
       });
     });

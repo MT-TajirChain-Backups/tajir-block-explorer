@@ -6,8 +6,6 @@ import { useDisclosure } from 'toolkit/hooks/useDisclosure';
 import IconSvg from 'ui/shared/IconSvg';
 import NavigationMobile from 'ui/snippets/navigation/mobile/NavigationMobile';
 import RollupStageBadge from 'ui/snippets/navigation/RollupStageBadge';
-import TestnetBadge from 'ui/snippets/navigation/TestnetBadge';
-import NetworkLogo from 'ui/snippets/networkLogo/NetworkLogo';
 
 interface Props {
   isMarketplaceAppPage?: boolean;
@@ -35,9 +33,7 @@ const Burger = ({ isMarketplaceAppPage }: Props) => {
       </DrawerTrigger>
       <DrawerContent >
         <DrawerBody display="flex" flexDirection="column" overflowX="hidden" overflowY="auto">
-          <TestnetBadge alignSelf="flex-start" mb={ 2 }/>
           <RollupStageBadge alignSelf="flex-start" mb={ 2 }/>
-          <NetworkLogo/>
           <NavigationMobile onNavLinkClick={ onClose } isMarketplaceAppPage={ isMarketplaceAppPage }/>
         </DrawerBody>
       </DrawerContent>

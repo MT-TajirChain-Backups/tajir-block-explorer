@@ -91,8 +91,8 @@ const HeroBanner = () => {
           >
             {
               config.meta.seo.enhancedDataEnabled ?
-                `${ config.chain.name } blockchain explorer` :
-                `${ config.chain.name } explorer`
+                `${ config.app.nameLatest || config.chain.name } blockchain explorer` :
+                `${ config.app.nameLatest || config.chain.name } explorer`
             }
           </Heading>
           { config.UI.navigation.layout === 'vertical' && (
