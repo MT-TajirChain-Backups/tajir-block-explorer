@@ -6,9 +6,13 @@
 /.pnp
 .pnp.js
 
-# Yarn Berry artifacts — this repo uses Yarn Classic 1.22.22 (see packageManager)
-.yarn/
-.yarnrc.yml
+# Yarn Berry junk — keep the committed Classic launcher
+.yarn/*
+!.yarn/bin/
+!.yarn/bin/yarn
+!.yarn/releases/
+!.yarn/releases/yarn-1.22.22.js
+!.yarn/releases/yarn-classic.cjs
 
 # testing
 /coverage

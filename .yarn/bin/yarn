@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -euo pipefail
+export YARN_IGNORE_PATH=1
+ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+exec node "$ROOT/.yarn/releases/yarn-1.22.22.js" "$@"
