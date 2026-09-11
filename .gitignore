@@ -6,6 +6,10 @@
 /.pnp
 .pnp.js
 
+# Yarn Berry artifacts — this repo uses Yarn Classic 1.22.22 (see packageManager)
+.yarn/
+.yarnrc.yml
+
 # testing
 /coverage
 
