@@ -9,7 +9,6 @@ import useProvider from 'lib/web3/useProvider';
 import { CONTENT_MAX_WIDTH } from 'ui/shared/layout/utils';
 import NetworkAddToWallet from 'ui/shared/NetworkAddToWallet';
 import TestnetBadge from 'ui/snippets/navigation/TestnetBadge';
-import NetworkIcon from 'ui/snippets/networkLogo/NetworkIcon';
 import NetworkLogo from 'ui/snippets/networkLogo/NetworkLogo';
 
 import DeFiDropdown from './DeFiDropdown';
@@ -104,8 +103,7 @@ const TopBar = () => {
           alignItems="center"
           gap={2}
         >
-          <NetworkLogo display={{ base: 'none', lg: 'block' }} logoHeight="60px"/>
-          <NetworkIcon display={{ base: 'block', lg: 'none' }}/>
+          <NetworkLogo logoHeight={{ base: '36px', lg: '60px' }}/>
           <TestnetBadge/>
         </Flex>
         <HStack
