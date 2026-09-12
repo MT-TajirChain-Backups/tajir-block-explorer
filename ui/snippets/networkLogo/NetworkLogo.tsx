@@ -5,16 +5,16 @@ import { route } from 'nextjs-routes';
 
 import config from 'configs/app';
 import { useColorModeValue } from 'toolkit/chakra/color-mode';
-import { Image } from 'toolkit/chakra/image';
+import { Image, type ImageProps } from 'toolkit/chakra/image';
 import IconSvg from 'ui/shared/IconSvg';
 
 import { INVERT_FILTER } from './consts';
 
-const LogoFallback = ({ height = '30px' }: { height?: string }) => {
+const LogoFallback = ({ height = '30px' }: { height?: ImageProps['h'] }) => {
   return (
     <IconSvg
       name="networks/logo-placeholder"
-      width="120px"
+      width={{ base: '100px', lg: '120px' }}
       height={ height }
       color={{ base: 'blue.600', _dark: 'white' }}
       aria-label="Network logo placeholder"
@@ -24,7 +24,7 @@ const LogoFallback = ({ height = '30px' }: { height?: string }) => {
 
 type Props = {
   className?: string;
-  logoHeight?: string;
+  logoHeight?: ImageProps['h'];
 };
 
 const NetworkLogo = ({ className, logoHeight = '30px' }: Props) => {
@@ -39,7 +39,8 @@ const NetworkLogo = ({ className, logoHeight = '30px' }: Props) => {
     >
       <Image
         h={ logoHeight }
-        skeletonWidth="120px"
+        maxW={{ base: '140px', lg: 'unset' }}
+        skeletonWidth={{ base: '100px', lg: '120px' }}
         src={ logoSrc }
         alt={ `${ config.chain.name } network logo` }
         fallback={ <LogoFallback height={ logoHeight }/> }
