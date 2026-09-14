@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
+import dynamicPage from 'nextjs/dynamicPage';
 import PageNextJs from 'nextjs/PageNextJs';
 
-const GasTracker = dynamic(() => import('ui/pages/GasTracker'), { ssr: false });
+const GasTracker = dynamicPage(() => import('ui/pages/GasTracker'));
 
 const Page: NextPage = () => {
   return (

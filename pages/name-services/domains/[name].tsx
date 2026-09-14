@@ -1,11 +1,11 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
+import dynamicPage from 'nextjs/dynamicPage';
 import type { Props } from 'nextjs/getServerSideProps/handlers';
 import PageNextJs from 'nextjs/PageNextJs';
 
-const NameDomain = dynamic(() => import('ui/pages/NameDomain'), { ssr: false });
+const NameDomain = dynamicPage(() => import('ui/pages/NameDomain'));
 
 const Page: NextPage<Props> = (props: Props) => {
   return (

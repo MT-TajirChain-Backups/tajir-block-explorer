@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
+import dynamicPage from 'nextjs/dynamicPage';
 import PageNextJs from 'nextjs/PageNextJs';
 
-const WatchList = dynamic(() => import('ui/pages/Watchlist'), { ssr: false });
+const WatchList = dynamicPage(() => import('ui/pages/Watchlist'));
 
 const Page: NextPage = () => {
   return (

@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
+import dynamicPage from 'nextjs/dynamicPage';
 import PageNextJs from 'nextjs/PageNextJs';
 
-const Epochs = dynamic(() => import('ui/pages/Epochs'), { ssr: false });
+const Epochs = dynamicPage(() => import('ui/pages/Epochs'));
 
 const Page: NextPage = () => {
   return (
