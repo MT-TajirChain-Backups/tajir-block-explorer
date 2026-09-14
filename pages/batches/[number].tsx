@@ -17,6 +17,8 @@ const Batch = dynamicPage(() => {
   switch (rollupFeature.type) {
     case 'arbitrum':
       return import('ui/pages/ArbitrumL2TxnBatch');
+    case 'aggLayer':
+      return import('ui/pages/OptimisticL2TxnBatch');
     case 'optimistic':
       return import('ui/pages/OptimisticL2TxnBatch');
     case 'zkEvm':
@@ -31,8 +33,8 @@ const Batch = dynamicPage(() => {
 
 const Page: NextPage<Props> = (props: Props) => {
   return (
-    <PageNextJs pathname="/batches/[number]" query={ props.query }>
-      <Batch/>
+    <PageNextJs pathname="/batches/[number]" query={props.query}>
+      <Batch />
     </PageNextJs>
   );
 };
