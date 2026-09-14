@@ -33,8 +33,8 @@ const Batch = dynamicPage(() => {
 
 const Page: NextPage<Props> = (props: Props) => {
   return (
-    <PageNextJs pathname="/batches/[number]" query={props.query}>
-      <Batch />
+    <PageNextJs pathname="/batches/[number]" query={ props.query }>
+      <Batch/>
     </PageNextJs>
   );
 };
