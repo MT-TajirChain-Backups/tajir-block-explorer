@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
+import dynamicPage from 'nextjs/dynamicPage';
 import PageNextJs from 'nextjs/PageNextJs';
 
-const Pools = dynamic(() => import('ui/pages/Pools'), { ssr: false });
+const Pools = dynamicPage(() => import('ui/pages/Pools'));
 
 const Page: NextPage = () => {
   return (

@@ -1,18 +1,18 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
+import dynamicPage from 'nextjs/dynamicPage';
 import PageNextJs from 'nextjs/PageNextJs';
 
 import config from 'configs/app';
 
-const UserOps = dynamic(() => {
+const UserOps = dynamicPage(() => {
   if (config.features.opSuperchain.isEnabled) {
     return import('ui/optimismSuperchain/userOps/OpSuperchainUserOps');
   }
 
   return import('ui/pages/UserOps');
-}, { ssr: false });
+});
 
 const Page: NextPage = () => {
   return (

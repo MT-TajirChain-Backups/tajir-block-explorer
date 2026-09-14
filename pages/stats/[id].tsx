@@ -1,8 +1,8 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
 import type { Route } from 'nextjs-routes';
+import dynamicPage from 'nextjs/dynamicPage';
 import type { Props } from 'nextjs/getServerSideProps/handlers';
 import * as gSSP from 'nextjs/getServerSideProps/main';
 import PageNextJs from 'nextjs/PageNextJs';
@@ -14,7 +14,7 @@ import { MultichainProvider } from 'lib/contexts/multichain';
 import dayjs from 'lib/date/dayjs';
 import getQueryParamString from 'lib/router/getQueryParamString';
 
-const Chart = dynamic(() => import('ui/pages/Chart'), { ssr: false });
+const Chart = dynamicPage(() => import('ui/pages/Chart'));
 
 const pathname: Route['pathname'] = '/stats/[id]';
 

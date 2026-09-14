@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
+import dynamicPage from 'nextjs/dynamicPage';
 import PageNextJs from 'nextjs/PageNextJs';
 
-const HotContracts = dynamic(() => import('ui/pages/HotContracts'), { ssr: false });
+const HotContracts = dynamicPage(() => import('ui/pages/HotContracts'));
 
 const Page: NextPage = () => {
   return (
