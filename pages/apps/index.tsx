@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
+import dynamicPage from 'nextjs/dynamicPage';
 import PageNextJs from 'nextjs/PageNextJs';
 
-const Marketplace = dynamic(() => import('ui/pages/Marketplace'), { ssr: false });
+const Marketplace = dynamicPage(() => import('ui/pages/Marketplace'));
 
 const Page: NextPage = () => (
   <PageNextJs pathname="/apps">

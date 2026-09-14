@@ -1,11 +1,11 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
+import dynamicPage from 'nextjs/dynamicPage';
 import type { Props } from 'nextjs/getServerSideProps/handlers';
 import PageNextJs from 'nextjs/PageNextJs';
 
-const Epoch = dynamic(() => import('ui/pages/Epoch'), { ssr: false });
+const Epoch = dynamicPage(() => import('ui/pages/Epoch'));
 
 const Page: NextPage<Props> = (props: Props) => {
   return (

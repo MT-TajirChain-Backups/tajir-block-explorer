@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
+import dynamicPage from 'nextjs/dynamicPage';
 import PageNextJs from 'nextjs/PageNextJs';
 
-const NameServices = dynamic(() => import('ui/pages/NameServices'), { ssr: false });
+const NameServices = dynamicPage(() => import('ui/pages/NameServices'));
 
 const Page: NextPage = () => {
   return (

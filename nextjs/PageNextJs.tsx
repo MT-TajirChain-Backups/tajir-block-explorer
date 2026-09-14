@@ -6,7 +6,6 @@ import PageMetadata from 'nextjs/PageMetadata';
 
 import useAdblockDetect from 'lib/hooks/useAdblockDetect';
 import useGetCsrfToken from 'lib/hooks/useGetCsrfToken';
-import useIsMounted from 'lib/hooks/useIsMounted';
 import useNotifyOnNavigation from 'lib/hooks/useNotifyOnNavigation';
 import * as mixpanel from 'lib/mixpanel';
 
@@ -17,8 +16,17 @@ interface Props<Pathname extends Route['pathname']> {
   apiData?: PageProps<Pathname>['apiData'];
 }
 
+// After the first client hydrate, later route changes can render page UI immediately
+// so existing component skeletons appear without waiting for another mount cycle.
+let isClientHydrated = false;
+
 const PageNextJs = <Pathname extends Route['pathname']>(props: Props<Pathname>) => {
-  const isMounted = useIsMounted();
+  const [ isHydrated, setIsHydrated ] = React.useState(isClientHydrated);
+
+  React.useEffect(() => {
+    isClientHydrated = true;
+    setIsHydrated(true);
+  }, []);
 
   useGetCsrfToken();
   useAdblockDetect();
@@ -30,7 +38,7 @@ const PageNextJs = <Pathname extends Route['pathname']>(props: Props<Pathname>) 
   return (
     <>
       <PageMetadata pathname={ props.pathname } query={ props.query } apiData={ props.apiData }/>
-      { isMounted ? props.children : null }
+      { isHydrated ? props.children : null }
     </>
   );
 };

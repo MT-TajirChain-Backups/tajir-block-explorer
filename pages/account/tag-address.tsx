@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
+import dynamicPage from 'nextjs/dynamicPage';
 import PageNextJs from 'nextjs/PageNextJs';
 
-const PrivateTags = dynamic(() => import('ui/pages/PrivateTags'), { ssr: false });
+const PrivateTags = dynamicPage(() => import('ui/pages/PrivateTags'));
 
 const Page: NextPage = () => {
   return (

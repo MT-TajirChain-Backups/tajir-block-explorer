@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
+import dynamicPage from 'nextjs/dynamicPage';
 import PageNextJs from 'nextjs/PageNextJs';
 
-const MudWorlds = dynamic(() => import('ui/pages/MudWorlds'), { ssr: false });
+const MudWorlds = dynamicPage(() => import('ui/pages/MudWorlds'));
 
 const Page: NextPage = () => {
   return (

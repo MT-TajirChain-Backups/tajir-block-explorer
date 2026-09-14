@@ -1,12 +1,12 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
 import type { Route } from 'nextjs-routes';
+import dynamicPage from 'nextjs/dynamicPage';
 import type { Props } from 'nextjs/getServerSideProps/handlers';
 import PageNextJs from 'nextjs/PageNextJs';
 
-const OpSuperchainTokenInstance = dynamic(() => import('ui/optimismSuperchain/tokenInstance/OpSuperchainTokenInstance'), { ssr: false });
+const OpSuperchainTokenInstance = dynamicPage(() => import('ui/optimismSuperchain/tokenInstance/OpSuperchainTokenInstance'));
 
 const pathname: Route['pathname'] = '/token/[hash]/instance/[id]';
 

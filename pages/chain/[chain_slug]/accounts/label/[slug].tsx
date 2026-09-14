@@ -1,12 +1,12 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
+import dynamicPage from 'nextjs/dynamicPage';
 import PageNextJs from 'nextjs/PageNextJs';
 
 import { MultichainProvider } from 'lib/contexts/multichain';
 
-const AccountsLabelSearch = dynamic(() => import('ui/pages/AccountsLabelSearch'), { ssr: false });
+const AccountsLabelSearch = dynamicPage(() => import('ui/pages/AccountsLabelSearch'));
 
 const Page: NextPage = () => {
   return (
