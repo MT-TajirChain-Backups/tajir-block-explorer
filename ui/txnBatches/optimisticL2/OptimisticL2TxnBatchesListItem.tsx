@@ -17,7 +17,9 @@ const rollupFeature = config.features.rollup;
 type Props = { item: OptimisticL2TxnBatchesItem; isLoading?: boolean };
 
 const OptimisticL2TxnBatchesListItem = ({ item, isLoading }: Props) => {
-  if (!rollupFeature.isEnabled || rollupFeature.type !== 'optimistic') {
+  if (
+    !rollupFeature.isEnabled || (rollupFeature.type !== 'optimistic' && rollupFeature.type !== 'aggLayer')
+  ) {
     return null;
   }
 

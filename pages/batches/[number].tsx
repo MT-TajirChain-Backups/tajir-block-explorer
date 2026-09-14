@@ -17,6 +17,8 @@ const Batch = dynamicPage(() => {
   switch (rollupFeature.type) {
     case 'arbitrum':
       return import('ui/pages/ArbitrumL2TxnBatch');
+    case 'aggLayer':
+      return import('ui/pages/OptimisticL2TxnBatch');
     case 'optimistic':
       return import('ui/pages/OptimisticL2TxnBatch');
     case 'zkEvm':
