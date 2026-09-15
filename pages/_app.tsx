@@ -72,18 +72,18 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   }, []);
 
   const content = (() => {
-    const getLayout = Component.getLayout ?? ((page) => <Layout>{ page }</Layout>);
+    const getLayout = Component.getLayout ?? ((page) => <Layout>{page}</Layout>);
 
     return (
       <>
-        { getLayout(<Component { ...pageProps }/>) }
-        <Toaster/>
-        { config.features.rewards.isEnabled && (
+        {getLayout(<Component {...pageProps} />)}
+        <Toaster />
+        {config.features.rewards.isEnabled && (
           <>
-            <RewardsLoginModal/>
-            <RewardsActivityTracker/>
+            <RewardsLoginModal />
+            <RewardsActivityTracker />
           </>
-        ) }
+        )}
       </>
     );
   })();
@@ -92,27 +92,27 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <ChakraProvider>
-      <RollbarProvider config={ rollbarConfig }>
+      <RollbarProvider config={rollbarConfig}>
         <AppErrorBoundary
-          { ...ERROR_SCREEN_STYLES }
-          Container={ AppErrorGlobalContainer }
+          {...ERROR_SCREEN_STYLES}
+          Container={AppErrorGlobalContainer}
         >
           <Web3ModalProvider>
-            <AppContextProvider pageProps={ pageProps }>
-              <QueryClientProvider client={ queryClient }>
-                <GrowthBookProvider growthbook={ growthBook }>
-                  <SocketProvider url={ socketUrl }>
+            <AppContextProvider pageProps={pageProps}>
+              <QueryClientProvider client={queryClient}>
+                <GrowthBookProvider growthbook={growthBook}>
+                  <SocketProvider url={socketUrl}>
                     <RewardsContextProvider>
                       <MarketplaceContextProvider>
                         <SettingsContextProvider>
-                          { content }
+                          {content}
                         </SettingsContextProvider>
                       </MarketplaceContextProvider>
                     </RewardsContextProvider>
                   </SocketProvider>
                 </GrowthBookProvider>
-                <ReactQueryDevtools buttonPosition="bottom-left" position="left"/>
-                <GoogleAnalytics/>
+                <ReactQueryDevtools buttonPosition="bottom-right" position="left" />
+                <GoogleAnalytics />
               </QueryClientProvider>
             </AppContextProvider>
           </Web3ModalProvider>
