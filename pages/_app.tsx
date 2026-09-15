@@ -111,7 +111,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
                     </RewardsContextProvider>
                   </SocketProvider>
                 </GrowthBookProvider>
-                <ReactQueryDevtools buttonPosition="bottom-left" position="left"/>
+                <ReactQueryDevtools buttonPosition="bottom-right" position="left"/>
                 <GoogleAnalytics/>
               </QueryClientProvider>
             </AppContextProvider>
