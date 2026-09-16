@@ -1,14 +1,14 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
+import dynamicPage from 'nextjs/dynamicPage';
 import PageNextJs from 'nextjs/PageNextJs';
 
 import config from 'configs/app';
 const rollupFeature = config.features.rollup;
 const beaconChainFeature = config.features.beaconChain;
 
-const Deposits = dynamic(() => {
+const Deposits = dynamicPage(() => {
   if (rollupFeature.isEnabled && rollupFeature.type === 'optimistic') {
     return import('ui/pages/OptimisticL2Deposits');
   }
@@ -25,6 +25,10 @@ const Deposits = dynamic(() => {
     return import('ui/pages/ZkEvmL2Deposits');
   }
 
+  if (rollupFeature.isEnabled && rollupFeature.type === 'aggLayer') {
+    return import('ui/pages/ZkEvmL2Deposits');
+  }
+
   if (rollupFeature.isEnabled && rollupFeature.type === 'scroll') {
     return import('ui/pages/ScrollL2Deposits');
   }
@@ -34,7 +38,7 @@ const Deposits = dynamic(() => {
   }
 
   throw new Error('Deposits feature is not enabled.');
-}, { ssr: false });
+});
 
 const Page: NextPage = () => {
   return (

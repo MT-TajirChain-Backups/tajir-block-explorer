@@ -94,6 +94,7 @@ All json-like values should be single-quoted. If it contains a hash (`#`) or a d
 | NEXT_PUBLIC_APP_PORT | `number` | Port where app is running | - | `3000` | `3001` | v1.0.x+ |
 | NEXT_PUBLIC_APP_ENV | `string` | App env (e.g development, staging, production, etc.). | - | `production` | `staging` | v1.0.x+ |
 | NEXT_PUBLIC_APP_INSTANCE | `string` | Name of app instance. Used for app monitoring purposes. If not provided, it will be constructed from `NEXT_PUBLIC_APP_HOST` | - | - | `wonderful_kepler` | v1.0.x+ |
+| NEXT_PUBLIC_APP_NAME_LATEST | `string` | Latest displayed app name used in the homepage hero banner. Falls back to `NEXT_PUBLIC_NETWORK_NAME` when unset | - | - | `TJRscan Testnet` | v2.6.0+ |
 | NEXT_PUBLIC_USE_NEXT_JS_PROXY | `boolean` | Tells the app to proxy all APIs request through the NextJS app. **We strongly advise not to use it in the production environment**, since it can lead to performance issues of the NodeJS server | - | `false` | `true` | v1.8.0+ |
 
 &nbsp;
@@ -120,6 +121,8 @@ Also, be aware that if you customize the name of the currency or any of its deno
 | NEXT_PUBLIC_NETWORK_VERIFICATION_TYPE | `validation` \| `mining` \| 'fee reception' | Verification type in the network. Irrelevant for Arbitrum (verification type is always `posting`) and ZkEvm (verification type is always `sequencing`) L2s | - | `mining` | `validation` | v1.0.x+ |
 | NEXT_PUBLIC_NETWORK_TOKEN_STANDARD_NAME | `string` | Name of the standard for creating tokens | - | `ERC` | `BEP` | v1.31.0+ |
 | NEXT_PUBLIC_IS_TESTNET | `boolean`| Set to true if network is testnet | - | `false` | `true` | v1.0.x+ |
+| NEXT_PUBLIC_NETWORK_LABEL_IMAGE | `string` | URL to the image displayed as a network label (e.g. Testnet badge) | - | `/static/labels/testnet.svg` | `https://example.com/badge.svg` | v2.6.0+ |
+| NEXT_PUBLIC_NETWORK_LABEL_TEXT | `string` | Text displayed when hovering over the network label image | - | `This is a testnet transaction only` | `Beta Network` | v2.6.0+ |
 
 &nbsp;
 

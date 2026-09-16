@@ -18,5 +18,10 @@
   },
   "devDependencies": {
     "dotenv-cli": "^7.2.1"
+  },
+  "resolutions": {
+    "serialize-javascript": "7.0.7",
+    "picomatch": "2.3.2",
+    "browserslist": ">=4.28.7"
   }
 }

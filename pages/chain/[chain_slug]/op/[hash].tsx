@@ -1,13 +1,13 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
+import dynamicPage from 'nextjs/dynamicPage';
 import type { Props } from 'nextjs/getServerSideProps/handlers';
 import PageNextJs from 'nextjs/PageNextJs';
 
 import { MultichainProvider } from 'lib/contexts/multichain';
 
-const UserOp = dynamic(() => import('ui/pages/UserOp'), { ssr: false });
+const UserOp = dynamicPage(() => import('ui/pages/UserOp'));
 
 const Page: NextPage<Props> = (props: Props) => {
   return (

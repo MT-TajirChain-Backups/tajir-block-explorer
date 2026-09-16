@@ -1,14 +1,14 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
+import dynamicPage from 'nextjs/dynamicPage';
 import PageNextJs from 'nextjs/PageNextJs';
 
 import config from 'configs/app';
 const rollupFeature = config.features.rollup;
 const beaconChainFeature = config.features.beaconChain;
 
-const Withdrawals = dynamic(() => {
+const Withdrawals = dynamicPage(() => {
   if (rollupFeature.isEnabled && rollupFeature.type === 'optimistic') {
     return import('ui/pages/OptimisticL2Withdrawals');
   }
@@ -25,6 +25,10 @@ const Withdrawals = dynamic(() => {
     return import('ui/pages/ZkEvmL2Withdrawals');
   }
 
+  if (rollupFeature.isEnabled && rollupFeature.type === 'aggLayer') {
+    return import('ui/pages/ZkEvmL2Withdrawals');
+  }
+
   if (rollupFeature.isEnabled && rollupFeature.type === 'scroll') {
     return import('ui/pages/ScrollL2Withdrawals');
   }
@@ -34,7 +38,7 @@ const Withdrawals = dynamic(() => {
   }
 
   throw new Error('Withdrawals feature is not enabled.');
-}, { ssr: false });
+});
 
 const Page: NextPage = () => {
   return (

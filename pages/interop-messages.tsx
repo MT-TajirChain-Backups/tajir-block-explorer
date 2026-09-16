@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
+import dynamicPage from 'nextjs/dynamicPage';
 import PageNextJs from 'nextjs/PageNextJs';
 
-const InteropMessages = dynamic(() => import('ui/pages/InteropMessages'), { ssr: false });
+const InteropMessages = dynamicPage(() => import('ui/pages/InteropMessages'));
 
 const Page: NextPage = () => {
   return (

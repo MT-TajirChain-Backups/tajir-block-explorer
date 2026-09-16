@@ -32,11 +32,14 @@ const schema = yup
     NEXT_PUBLIC_APP_PORT: yup.number().positive().integer(),
     NEXT_PUBLIC_APP_ENV: yup.string(),
     NEXT_PUBLIC_APP_INSTANCE: yup.string(),
+    NEXT_PUBLIC_APP_NAME_LATEST: yup.string(),
 
     // 2. Blockchain parameters
     NEXT_PUBLIC_NETWORK_NAME: yup.string().required(),
     NEXT_PUBLIC_NETWORK_SHORT_NAME: yup.string(),
     NEXT_PUBLIC_IS_TESTNET: yup.boolean(),
+    NEXT_PUBLIC_NETWORK_LABEL_IMAGE: yup.string(),
+    NEXT_PUBLIC_NETWORK_LABEL_TEXT: yup.string(),
 
     // 5. Features configuration
     // NOTE!: Not all features are supported in multichain mode, and some of them not relevant or enabled per chain basis

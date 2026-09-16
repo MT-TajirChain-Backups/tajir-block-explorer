@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
+import dynamicPage from 'nextjs/dynamicPage';
 import PageNextJs from 'nextjs/PageNextJs';
 
-const OutputRoots = dynamic(() => import('ui/pages/OptimisticL2OutputRoots'), { ssr: false });
+const OutputRoots = dynamicPage(() => import('ui/pages/OptimisticL2OutputRoots'));
 
 const Page: NextPage = () => {
   return (

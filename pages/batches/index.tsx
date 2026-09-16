@@ -1,13 +1,13 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
+import dynamicPage from 'nextjs/dynamicPage';
 import PageNextJs from 'nextjs/PageNextJs';
 
 import config from 'configs/app';
 const rollupFeature = config.features.rollup;
 
-const Batches = dynamic(() => {
+const Batches = dynamicPage(() => {
   if (!rollupFeature.isEnabled) {
     throw new Error('Rollup feature is not enabled.');
   }
@@ -19,13 +19,15 @@ const Batches = dynamic(() => {
       return import('ui/pages/ZkSyncL2TxnBatches');
     case 'optimistic':
       return import('ui/pages/OptimisticL2TxnBatches');
+    case 'aggLayer':
+      return import('ui/pages/OptimisticL2TxnBatches');
     case 'arbitrum':
       return import('ui/pages/ArbitrumL2TxnBatches');
     case 'scroll':
       return import('ui/pages/ScrollL2TxnBatches');
   }
   throw new Error('Txn batches feature is not enabled.');
-}, { ssr: false });
+});
 
 const Page: NextPage = () => {
   return (

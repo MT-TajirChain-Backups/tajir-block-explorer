@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
+import dynamicPage from 'nextjs/dynamicPage';
 import PageNextJs from 'nextjs/PageNextJs';
 
-const ApiKeys = dynamic(() => import('ui/pages/ApiKeys'), { ssr: false });
+const ApiKeys = dynamicPage(() => import('ui/pages/ApiKeys'));
 
 const Page: NextPage = () => {
   return (

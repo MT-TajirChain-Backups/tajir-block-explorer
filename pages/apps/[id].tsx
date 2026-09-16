@@ -1,5 +1,4 @@
 import type { GetServerSideProps } from 'next';
-import dynamic from 'next/dynamic';
 import fetch from 'node-fetch';
 import React from 'react';
 
@@ -7,6 +6,7 @@ import type { NextPageWithLayout } from 'nextjs/types';
 import type { MarketplaceApp } from 'types/client/marketplace';
 
 import type { Route } from 'nextjs-routes';
+import dynamicPage from 'nextjs/dynamicPage';
 import type { Props } from 'nextjs/getServerSideProps/handlers';
 import * as gSSP from 'nextjs/getServerSideProps/main';
 import PageNextJs from 'nextjs/PageNextJs';
@@ -17,7 +17,7 @@ import config from 'configs/app';
 import getQueryParamString from 'lib/router/getQueryParamString';
 import LayoutApp from 'ui/shared/layout/LayoutApp';
 
-const MarketplaceAppPage = dynamic(() => import('ui/pages/MarketplaceApp'), { ssr: false });
+const MarketplaceAppPage = dynamicPage(() => import('ui/pages/MarketplaceApp'));
 
 const pathname: Route['pathname'] = '/apps/[id]';
 const feature = config.features.marketplace;

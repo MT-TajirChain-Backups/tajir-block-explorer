@@ -20,7 +20,7 @@ export default function generate<Pathname extends Route['pathname']>(route: Rout
   const params = {
     ...route.query,
     ...apiData,
-    network_name: config.chain.name,
+    network_name: config.app.nameLatest || config.chain.name,
     network_title: getNetworkTitle(),
     network_gwei: currencyUnits.gwei,
     id_cap: idCap,

@@ -57,6 +57,7 @@ const schema = yup
     NEXT_PUBLIC_APP_PORT: yup.number().positive().integer(),
     NEXT_PUBLIC_APP_ENV: yup.string(),
     NEXT_PUBLIC_APP_INSTANCE: yup.string(),
+    NEXT_PUBLIC_APP_NAME_LATEST: yup.string(),
 
 
     // Features configuration
@@ -86,16 +87,24 @@ const schema = yup
       .of(multichainProviderConfigSchema),
     NEXT_PUBLIC_GAS_REFUEL_PROVIDER_CONFIG: yup
       .mixed()
-      .test('shape', 'Invalid schema were provided for NEXT_PUBLIC_GAS_REFUEL_PROVIDER_CONFIG, it should have name and url template', (data) => {
+      .test('shape', 'Invalid schema were provided for NEXT_PUBLIC_GAS_REFUEL_PROVIDER_CONFIG', (data) => {
         const isUndefined = data === undefined;
-        const valueSchema = yup.object<GasRefuelProviderConfig>().transform(replaceQuotes).json().shape({
+        const objectSchema = yup.object<GasRefuelProviderConfig>().transform(replaceQuotes).json().shape({
           name: yup.string().required(),
           url_template: yup.string().required(),
           logo: yup.string(),
           dapp_id: yup.string(),
         });
+        const arraySchema = yup.array().transform(replaceQuotes).json().of(
+          yup.object<GasRefuelProviderConfig>().shape({
+            name: yup.string().required(),
+            url_template: yup.string().required(),
+            logo: yup.string(),
+            dapp_id: yup.string(),
+          })
+        );
 
-        return isUndefined || valueSchema.isValidSync(data);
+        return isUndefined || objectSchema.isValidSync(data) || arraySchema.isValidSync(data);
       }),
     NEXT_PUBLIC_VALIDATORS_CHAIN_TYPE: yup.string<ValidatorsChainType>().oneOf(VALIDATORS_CHAIN_TYPE),
     NEXT_PUBLIC_GAS_TRACKER_ENABLED: yup.boolean(),

@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
 
+import dynamicPage from 'nextjs/dynamicPage';
 import PageNextJs from 'nextjs/PageNextJs';
 
-const CustomAbi = dynamic(() => import('ui/pages/CustomAbi'), { ssr: false });
+const CustomAbi = dynamicPage(() => import('ui/pages/CustomAbi'));
 
 const Page: NextPage = () => {
   return (
