@@ -257,7 +257,7 @@ jobs:
             🐳 *Docker Image:* ${{ steps.version.outputs.image_tags }}\n\
             🌿 *Branch:* ${{ github.base_ref }}\n\
             👤 *Triggered by:* ${{ github.actor }}\n\
-            🔎 *Scanned SHA:* \`${{ steps.version.outputs.source_sha }}\`\n\
+            🔎 *Git Commit_ID:* \`${{ steps.version.outputs.source_sha }}\`\n\
             🔗 *Docker Hub:* https://hub.docker.com/r/${{ env.DOCKERHUB_IMAGE }}\n\
             🔑 *Image Digest:* ${{ steps.push.outputs.image_digest }}\n\
             ${SCAN_NOTE}\"
