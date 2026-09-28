@@ -68,6 +68,8 @@ declare module "nextjs-routes" {
     | StaticRoute<"/">
     | StaticRoute<"/internal-txs">
     | StaticRoute<"/interop-messages">
+    | DynamicRoute<"/l1-holders/[hash]", { "hash": string }>
+    | StaticRoute<"/l1-holders">
     | StaticRoute<"/login">
     | StaticRoute<"/mud-worlds">
     | DynamicRoute<"/name-services/clusters/[name]", { "name": string }>

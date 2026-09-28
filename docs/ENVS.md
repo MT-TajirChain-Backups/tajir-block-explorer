@@ -1001,6 +1001,19 @@ Show the page with aggregate metrics for the most popular contracts.
 
 &nbsp;
 
+### L1 holders
+
+Shows curated Ethereum L1 token holder / transfer data from a public Blockscout API (e.g. eth.blockscout.com), without changing the local chain API host.
+
+| Variable | Type| Description | Compulsoriness  | Default value | Example value | Version |
+| --- | --- | --- | --- | --- | --- | --- |
+| NEXT_PUBLIC_L1_HOLDERS_ENABLED | `boolean` | Set to true to enable the L1 holders sidebar page | Required | - | `true` | custom |
+| NEXT_PUBLIC_L1_BLOCKSCOUT_API_HOST | `string` | Base URL of the Ethereum Blockscout instance used for L1 token data | Required | - | `https://eth.blockscout.com` | custom |
+| NEXT_PUBLIC_L1_HOLDERS_TOKENS | `Array<{address:string;symbol?:string;name?:string}>` | Curated L1 token contracts to list | Required | - | `[{"address":"0x9D98C61d1136cfA2ac263Be355350C97Ca41c110","symbol":"TJR","name":"Tajir"}]` | custom |
+| NEXT_PUBLIC_L1_HOLDERS_EXTERNAL_EXPLORERS | `Array<NetworkExplorer>` | Optional external explorers shown on L1 token detail (e.g. Etherscan). Defaults to Etherscan if unset | - | Etherscan mainnet | `[{"title":"Etherscan","baseUrl":"https://etherscan.io/","paths":{"token":"/token"}}]` | custom |
+
+&nbsp;
+
 ### Flashblocks
 
 This feature allows users to view [Flashblocks](https://docs.base.org/base-chain/flashblocks/apps)-related content in the explorer, including the Flashblocks real-time feed. It currently supports only Base chains.
