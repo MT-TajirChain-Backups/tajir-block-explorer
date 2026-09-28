@@ -13,6 +13,7 @@ function generateCspPolicy() {
     descriptors.googleReCaptcha(),
     descriptors.growthBook(),
     descriptors.helia(),
+    descriptors.l1Holders(),
     descriptors.marketplace(),
     descriptors.megaEth(),
     descriptors.mixpanel(),

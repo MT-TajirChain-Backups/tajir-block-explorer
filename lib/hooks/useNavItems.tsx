@@ -259,6 +259,12 @@ export default function useNavItems(): ReturnType {
         icon: 'navigation/dex_tracker',
         isActive: pathname === '/pools' || pathname.startsWith('/pool/'),
       },
+      config.features.l1Holders.isEnabled && {
+        text: 'L1 holders',
+        nextRoute: { pathname: '/l1-holders' as const },
+        icon: 'navigation/tokens',
+        isActive: pathname === '/l1-holders' || pathname.startsWith('/l1-holders/'),
+      },
     ].filter(Boolean);
 
     const statsNavItem: NavGroupItem | null = (() => {

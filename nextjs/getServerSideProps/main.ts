@@ -23,6 +23,7 @@ export const validators = factory([ guards.validators ]);
 export const validatorDetails = factory([ guards.validatorDetails ]);
 export const gasTracker = factory([ guards.gasTracker ]);
 export const hotContracts = factory([ guards.hotContracts ]);
+export const l1Holders = factory([ guards.l1Holders ]);
 export const advancedFilter = factory([ guards.advancedFilter ]);
 export const dataAvailability = factory([ guards.dataAvailability ]);
 export const login = factory([ guards.login ]);
