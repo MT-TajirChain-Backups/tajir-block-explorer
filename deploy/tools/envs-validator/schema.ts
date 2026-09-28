@@ -156,6 +156,36 @@ const schema = yup
       }),
     NEXT_PUBLIC_FLASHBLOCKS_SOCKET_URL: yup.string().test(urlTest),
     NEXT_PUBLIC_HOT_CONTRACTS_ENABLED: yup.boolean(),
+    NEXT_PUBLIC_L1_HOLDERS_ENABLED: yup.boolean(),
+    NEXT_PUBLIC_L1_BLOCKSCOUT_API_HOST: yup.string().test(urlTest),
+    NEXT_PUBLIC_L1_HOLDERS_TOKENS: yup.mixed().test('is-l1-holders-tokens', 'Invalid L1 holders tokens config', (value) => {
+      if (value === undefined || value === null || value === '') {
+        return true;
+      }
+      try {
+        const parsed = typeof value === 'string' ? JSON.parse(value) : value;
+        if (!Array.isArray(parsed)) {
+          return false;
+        }
+        return parsed.every((item) => typeof item?.address === 'string' && item.address.length > 0);
+      } catch {
+        return false;
+      }
+    }),
+    NEXT_PUBLIC_L1_HOLDERS_EXTERNAL_EXPLORERS: yup.mixed().test('is-l1-holders-explorers', 'Invalid L1 holders external explorers config', (value) => {
+      if (value === undefined || value === null || value === '') {
+        return true;
+      }
+      try {
+        const parsed = typeof value === 'string' ? JSON.parse(value) : value;
+        if (!Array.isArray(parsed)) {
+          return false;
+        }
+        return parsed.every((item) => typeof item?.title === 'string' && typeof item?.baseUrl === 'string');
+      } catch {
+        return false;
+      }
+    }),
 
     // Misc
     NEXT_PUBLIC_USE_NEXT_JS_PROXY: yup.boolean(),

@@ -8,7 +8,9 @@ export { googleFonts } from './googleFonts';
 export { googleReCaptcha } from './googleReCaptcha';
 export { growthBook } from './growthBook';
 export { helia } from './helia';
+export { l1Holders } from './l1Holders';
 export { marketplace } from './marketplace';
+
 export { megaEth } from './megaEth';
 export { mixpanel } from './mixpanel';
 export { monaco } from './monaco';
