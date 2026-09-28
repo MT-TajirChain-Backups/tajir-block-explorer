@@ -150,6 +150,14 @@ export const hotContracts: Guard = (chainConfig: typeof config) => async() => {
   }
 };
 
+export const l1Holders: Guard = (chainConfig: typeof config) => async() => {
+  if (!chainConfig.features.l1Holders.isEnabled) {
+    return {
+      notFound: true,
+    };
+  }
+};
+
 export const advancedFilter: Guard = (chainConfig: typeof config) => async() => {
   if (!chainConfig.features.advancedFilter.isEnabled) {
     return {

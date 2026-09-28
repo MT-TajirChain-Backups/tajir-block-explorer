@@ -23,7 +23,9 @@ export { default as getGasButton } from './getGasButton';
 export { default as googleAnalytics } from './googleAnalytics';
 export { default as growthBook } from './growthBook';
 export { default as hotContracts } from './hotContracts';
+export { default as l1Holders } from './l1Holders';
 export { default as marketplace } from './marketplace';
+
 export { default as megaEth } from './megaEth';
 export { default as metasuites } from './metasuites';
 export { default as mixpanel } from './mixpanel';

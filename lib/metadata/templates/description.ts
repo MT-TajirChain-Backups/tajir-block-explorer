@@ -31,6 +31,8 @@ const TEMPLATE_MAP: Record<Route['pathname'], string> = {
   '/stats/[id]': DEFAULT_TEMPLATE,
   '/uptime': DEFAULT_TEMPLATE,
   '/hot-contracts': DEFAULT_TEMPLATE,
+  '/l1-holders': DEFAULT_TEMPLATE,
+  '/l1-holders/[hash]': '%hash% L1 token holders and transfers',
   '/api-docs': DEFAULT_TEMPLATE,
   '/search-results': DEFAULT_TEMPLATE,
   '/auth/profile': DEFAULT_TEMPLATE,
