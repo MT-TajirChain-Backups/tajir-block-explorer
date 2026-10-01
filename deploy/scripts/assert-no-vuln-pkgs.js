@@ -42,6 +42,9 @@ const BAD = {
     if (v.startsWith('4.')) return lt(v, '4.0.4');
     return false;
   },
+  axios: (v) => lt(v, '1.20.0'),
+  '@grpc/grpc-js': (v) => lt(v, '1.14.5'),
+  undici: (v) => lt(v, '6.28.1'),
 };
 
 const FIX = {
@@ -55,6 +58,9 @@ const FIX = {
   'serialize-javascript': '7.0.7',
   picomatch: '4.0.4',
   browserslist: '4.28.7',
+  axios: '1.20.0',
+  '@grpc/grpc-js': '1.14.5',
+  undici: '6.28.1',
 };
 
 const DELETE_ALWAYS = new Set([ 'tar', 'sigstore' ]);
@@ -99,8 +105,15 @@ function rmrf(p) {
 }
 
 function extractOverride(name, version, destDir) {
-  const tgz = path.join(OVERRIDES, `${ name }-${ version }.tgz`);
-  if (!fs.existsSync(tgz)) throw new Error(`missing override ${ tgz }`);
+  const candidates = [
+    path.join(OVERRIDES, `${ name }-${ version }.tgz`),
+    // npm pack: @scope/name → scope-name-version.tgz
+    name.startsWith('@')
+      ? path.join(OVERRIDES, `${ name.slice(1).replace('/', '-') }-${ version }.tgz`)
+      : null,
+  ].filter(Boolean);
+  const tgz = candidates.find((p) => fs.existsSync(p));
+  if (!tgz) throw new Error(`missing override for ${ name }@${ version } (tried ${ candidates.join(', ') })`);
   const tmp = fs.mkdtempSync('/tmp/assert-vuln-');
   try {
     execFileSync('tar', [ '-xzf', tgz, '-C', tmp ], { stdio: 'pipe' });
