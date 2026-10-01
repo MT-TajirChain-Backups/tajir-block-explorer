@@ -43,6 +43,9 @@ const PACKAGES = [
   'js-yaml',
   'immutable',
   'browserslist',
+  'axios',
+  '@grpc/grpc-js',
+  'undici',
 ];
 
 // Runtime-unnecessary in the shipped explorer image — safe to delete if patching fails.
@@ -115,6 +118,12 @@ function isVulnerable(name, version) {
       if (version.startsWith('4.')) return lt(version, '4.3.9');
       if (version.startsWith('5.')) return lt(version, '5.1.8');
       return false;
+    case 'axios':
+      return lt(version, '1.20.0');
+    case '@grpc/grpc-js':
+      return lt(version, '1.14.5');
+    case 'undici':
+      return lt(version, '6.28.1');
     default:
       return false;
   }
@@ -162,6 +171,12 @@ function patchedVersion(name, version) {
       // 3.x has no patched line — jump to last 4.x security release
       if (version.startsWith('5.')) return '5.1.8';
       return '4.3.9';
+    case 'axios':
+      return '1.20.0';
+    case '@grpc/grpc-js':
+      return '1.14.5';
+    case 'undici':
+      return '6.28.1';
     default:
       return version;
   }
@@ -178,9 +193,20 @@ function findTarball(overrideDir, name, version) {
   if (!overrideDir) return null;
   const exact = path.join(overrideDir, `${ name }-${ version }.tgz`);
   if (fs.existsSync(exact)) return exact;
-  // npm pack sometimes uses scoped naming; also try unscoped pattern matches
+  // npm pack names scoped pkgs as "scope-name-version.tgz" (drops the @)
+  const npmPackName = name.startsWith('@') ? `${ name.slice(1).replace('/', '-') }-${ version }.tgz` : null;
+  if (npmPackName) {
+    const scoped = path.join(overrideDir, npmPackName);
+    if (fs.existsSync(scoped)) return scoped;
+  }
+  // also try unscoped pattern matches
   const entries = fs.readdirSync(overrideDir);
-  const match = entries.find((f) => f === `${ name }-${ version }.tgz` || f.endsWith(`-${ name }-${ version }.tgz`));
+  const match = entries.find((f) => (
+    f === `${ name }-${ version }.tgz` ||
+    f === npmPackName ||
+    f.endsWith(`-${ name }-${ version }.tgz`) ||
+    (name.includes('/') && f.endsWith(`${ name.split('/').pop() }-${ version }.tgz`))
+  ));
   return match ? path.join(overrideDir, match) : null;
 }
 
